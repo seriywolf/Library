@@ -7,6 +7,16 @@ body {
   background-color: rgb(235, 227, 191);
 }
 
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }  
+
+th{
+    background-color: rgb(212, 212, 212);
+    border: 1px black solid;
+}
 form {
   margin-top: 24px;
 }

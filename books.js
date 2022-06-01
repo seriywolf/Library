@@ -29,3 +29,5 @@ function addBookToLibrary(title, author,pages,read) {
   const newBookButton = document.querySelector('#newBook').onclick = function(){
     document.getElementById("form").style.display = "block";
   };
+
+  //const body = document.querySelector("body");
