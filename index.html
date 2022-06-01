@@ -23,23 +23,27 @@
     <form id="form" action="">
         <fieldset>
             <p>
-                <label for="author">Author<abbr title="This field is mandatory" aria-label="required">*</abbr>:</label>
-                <input type="text" name="" id="author" placeholder="Stephen King" required min="5">
-            </p>
-            <p>
-                <label for="title">Title<abbr title="This field is mandatory" aria-label="required">*</abbr>:</label>
+                <label for="title">Title<abbr title="This field is mandatory" aria-label="required"></abbr>:</label>
                 <input type="text" name="" id="title" placeholder="The Shininig" required min="3">
             </p>
             <p>
-                <label for="pages">Pages number<abbr title="This field is mandatory"
-                        aria-label="required">*</abbr>:</label>
-                <input type="number" name="" id="pages" placeholder="431" required min="10">
+                <label for="author">Author<abbr title="This field is mandatory" aria-label="required"></abbr>:</label>
+                <input type="text" name="" id="author" placeholder="Stephen King" required min="5">
             </p>
-            <p>
-                <label for="read">Read?<abbr title="This field is mandatory" aria-label="required">*</abbr>:</label>
-                <input type="checkbox" name="" id="read" required>
-            </p>
-            <button type="submit">Add book</button>
+                <div id="last">
+                    <p id="pagesQuantity">
+                        <label for="pages">Pages quantity<abbr title="This field is mandatory"
+                                aria-label="required"></abbr>:</label>
+                        <input type="number" name="" id="pages" placeholder="431" required min="10">
+                    </p>
+
+                    <p id="readChoice">
+                        <label for="read">Read?<abbr title="This field is mandatory" aria-label="required"></abbr>:</label>
+                        <input type="checkbox" name="" id="read" required>
+                    </p>
+
+                </div>
+            <button type="submit" id="addBook">Add book</button>
 
         </fieldset>
     </form>

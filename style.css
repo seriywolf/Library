@@ -41,6 +41,7 @@ fieldset {
   width: 450px;
   background-color: rgb(194, 235, 221);
   padding: 8px;
+  padding-bottom: 18px;
 }
 
 fieldset p {
@@ -48,6 +49,7 @@ fieldset p {
   flex-direction: column;
   justify-content: center;
   width: 400px;
+  margin-top: 4px;
 }
 
 input[type="text"],
@@ -58,9 +60,29 @@ input[type="number"] {
   font-size: 1.4rem;
 }
 
+label{font-size: 1.3rem;}
+
+#last{
+    display: flex;
+    width: 400px;
+    justify-content: space-between;
+    flex: auto;
+}
+
+#pagesQuantity, #readChoice {
+    display: flex;    
+    width: 150px;
+  }
+
+  #readChoice{
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+  }
 button {
   width: 150px;
   height: 60px;
   border-radius: 6px;
   font-size: 1.5rem;
 }
+
