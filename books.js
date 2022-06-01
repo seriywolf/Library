@@ -11,6 +11,7 @@ function Books(title, author, pages, read) {
 }
 
 const table = document.querySelector("table");
+const form = document.getElementById("form");
 
 function addBookToLibrary(title, author, pages, read) {
   myLibrary.push({ title: title, author: author, pages: pages, read: read });
@@ -28,13 +29,15 @@ addBookToLibrary("War & Peace", "L. Tolstoy", 511, false);
 
 const newBookButton = (document.querySelector("#newBook").onclick =
   function () {
-    document.getElementById("form").style.display = "flex";
+    form.style.display = "flex";
   });
 
 const titleInput = document.querySelector("form #title");
 const authorInput = document.querySelector("form #author");
 const pagesInput = document.querySelector("form #pages");
 const readInput = document.querySelector("form #read");
+const fieldset = document.querySelector("fieldset");
+
 
 const addBookButton = (document.querySelector("#addBook").onclick =
   function () {
@@ -43,7 +46,7 @@ const addBookButton = (document.querySelector("#addBook").onclick =
       authorInput.value === "" ||
       pagesInput.value === ""
     ) {
-      alert("Error");
+        fieldset.style.border = "2px solid red "
     } else {
       addBookToLibrary(
         titleInput.value,
@@ -55,10 +58,17 @@ const addBookButton = (document.querySelector("#addBook").onclick =
       authorInput.value = "";
       pagesInput.value = "";
       readInput.checked = false;
-      document.getElementById("form").style.display = "none";
+      form.style.display = "none";
     }
   });
 
-const cancelButton = (document.querySelector("#cancel").onclick = function () {
-  document.getElementById("form").style.display = "none";
-});
+document.querySelector("#cancel").onclick = function () {
+    form.style.display = "none";
+};
+
+document.querySelectorAll("fieldset input").forEach((item) => 
+    item.addEventListener("click", function (event) {
+        if(fieldset.style.border === '2px solid red'){
+            fieldset.style.border =  "";
+   };
+}));
