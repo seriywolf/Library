@@ -19,7 +19,7 @@
         </tr>
 
     </table>
-    <button type="button" id="newBook">New book</button>
+    <div id="container"><button type="button" id="newBook" class="button">New book</button></div>
     <form id="form" action="">
         <fieldset>
             <p>
@@ -36,14 +36,15 @@
                                 aria-label="required"></abbr>:</label>
                         <input type="number" name="" id="pages" placeholder="431" required min="10">
                     </p>
-
                     <p id="readChoice">
                         <label for="read">Read?<abbr title="This field is mandatory" aria-label="required"></abbr>:</label>
                         <input type="checkbox" name="" id="read" required>
                     </p>
-
                 </div>
-            <button type="submit" id="addBook">Add book</button>
+            <div id="buttons">
+                <button type="button" id="addBook" class="button">Add book</button>
+                <button type="button" id="cancel" class="button">Close X</button>
+            </div>
 
         </fieldset>
     </form>

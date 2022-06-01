@@ -1,9 +1,4 @@
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: 100vh;
+body {  
   background-color: rgb(235, 227, 191);
 }
 
@@ -29,8 +24,28 @@ tr {
   height: 28px;
 }
 
+#container{
+    display: flex;
+    justify-content: center;
+}
 #newBook {
   margin: 32px;
+  width: 120px;
+  height: 45px;
+  border-radius: 6px;
+  font-size: 1.4rem;  
+}
+
+.button{
+    border: 2px solid gray;
+}
+.button:hover{
+    background-color: rgb(250, 192, 121);
+}
+
+#form{
+    display: none;
+    justify-content: center;
 }
 
 fieldset {
@@ -38,8 +53,8 @@ fieldset {
   flex-direction: column;
   align-items: center;
   border-radius: 12px;
-  width: 450px;
-  background-color: rgb(194, 235, 221);
+  width: 400px;
+  background-color: rgb(236, 244, 248);
   padding: 8px;
   padding-bottom: 18px;
 }
@@ -48,41 +63,65 @@ fieldset p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 400px;
-  margin-top: 4px;
+  width: 350px;
+  margin-bottom: 8px;  
+  margin-top: 2px;
 }
 
 input[type="text"],
 input[type="number"] {
-  height: 2rem;
+  height: 1.7rem;
   border-radius: 6px;
   padding-left: 10px;
-  font-size: 1.4rem;
+  font-size: 1rem;
+  border: 1px solid gray;
 }
 
-label{font-size: 1.3rem;}
-
-#last{
-    display: flex;
-    width: 400px;
-    justify-content: space-between;
-    flex: auto;
+label {
+  font-size: 1.1rem;
+  color: rgb(70, 70, 70);
+  padding-bottom: 4px;
 }
 
-#pagesQuantity, #readChoice {
-    display: flex;    
-    width: 150px;
-  }
+#last {
+  display: flex;
+  width: 350px;
+  justify-content: space-between;
+  flex: auto;
+}
 
-  #readChoice{
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-  }
-button {
+#pagesQuantity,
+#readChoice {
+  display: flex;
   width: 150px;
-  height: 60px;
-  border-radius: 6px;
-  font-size: 1.5rem;
 }
 
+#readChoice {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+input::placeholder{
+    color: rgb(206, 206, 206);
+    font-size: 1rem;
+}
+
+#buttons{
+    padding: 8px;
+    display: flex;
+    justify-content: space-around;
+    width: 350px;
+}
+
+#buttons button{
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+    justify-content: space-around;
+    font-size: 1.2rem;    
+}
+
+#cancel{
+    background-color: rgb(255, 157, 140);
+}
