@@ -1,6 +1,9 @@
 let myLibrary = [];
+let n = 0;
+const table = document.querySelector("table");
+const form = document.getElementById("form");
 
-function Books(title, author, pages, read) {
+function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -10,22 +13,8 @@ function Books(title, author, pages, read) {
   };
 }
 
-const table = document.querySelector("table");
-const form = document.getElementById("form");
-let n = 0;
-
-function deleteRowFunction(event) {    
-  let rowToRem = event.parentNode.parentNode;    
-  table.removeChild(rowToRem);
-  let nToRemove = parseInt(rowToRem.dataset.id);
-  
-  const indexOfObject = myLibrary.findIndex(object=>{
-    return object.nnn === nToRemove
-  });
- 
-  myLibrary.splice(indexOfObject,1);
-};
-
+//new Book("Harry Potter", "J.Rowling", 350, true).addBook();
+//new Book("War & Peace", "L.Tolstoy", 511, false).addBook();
 
 function addBookToLibrary(title, author, pages, read) {
   myLibrary.push({
@@ -47,17 +36,35 @@ function addBookToLibrary(title, author, pages, read) {
   td.appendChild(button);
   tr.appendChild(td);
   for (let item in myLibrary[myLibrary.length - 1]) {
-    if (item !== "n") {      
+    if (item !== "nnn") {
       let td = document.createElement("td");
       td.textContent = myLibrary[myLibrary.length - 1][item];
       tr.appendChild(td);
     }
   }
+  let tdStatus = document.createElement("td");
+  tdStatus.classList.add("statusColumn");
+  let buttonStatus = document.createElement("button");
+  buttonStatus.setAttribute("onclick", "changeStatus(this)");
+  //buttonStatus.textContent = "Change";
+  buttonStatus.classList.add("change");
+  tdStatus.appendChild(buttonStatus);
+  tr.appendChild(tdStatus);
   table.appendChild(tr);
 }
 
 addBookToLibrary("Harry Potter", "J.Rowling", 350, true);
 addBookToLibrary("War & Peace", "L.Tolstoy", 511, false);
+
+function deleteRowFunction(event) {
+  let rowToRem = event.parentNode.parentNode;
+  table.removeChild(rowToRem);
+  let nToRemove = parseInt(rowToRem.dataset.id);
+  const indexOfObject = myLibrary.findIndex((object) => {
+    return object.nnn === nToRemove;
+  });
+  myLibrary.splice(indexOfObject, 1);
+}
 
 const newBookButton = (document.querySelector("#newBook").onclick =
   function () {
@@ -104,3 +111,19 @@ document.querySelectorAll("fieldset input").forEach((item) =>
     }
   })
 );
+
+function changeStatus(event) {
+  let tdToChange = event.parentNode.previousSibling;
+  if (tdToChange.textContent === "false") {
+    tdToChange.textContent = "true";
+  } else {
+    tdToChange.textContent = "false";
+  }
+
+  let rowToChange = event.parentNode.parentNode;
+  let nToChange = parseInt(rowToChange.dataset.id);
+  const indexOfObject = myLibrary.findIndex((object) => {
+    return object.nnn === nToChange;
+  });
+  myLibrary[indexOfObject].read = !myLibrary[indexOfObject].read;
+}

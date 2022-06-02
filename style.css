@@ -129,13 +129,24 @@ input::placeholder{
 
 .remove{
     width: 24px;
-    height:20px;
+    height:24px;
     background-color: rgb(255, 80, 80);
     font-weight: 500;
+    border-radius: 12px;
     
 }
+
 .firstColumn{
     width: 28px;
     padding-left: 12px;
     padding-right: 12px;
+}
+
+.statusColumn{
+    width: 16px;
+}
+
+.change{
+    width: 8px;
+    height: 12px;
 }
