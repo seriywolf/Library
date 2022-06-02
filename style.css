@@ -126,3 +126,16 @@ input::placeholder{
 #cancel{
     background-color: rgb(255, 157, 140);
 }
+
+.remove{
+    width: 24px;
+    height:20px;
+    background-color: rgb(255, 80, 80);
+    font-weight: 500;
+    
+}
+.firstColumn{
+    width: 28px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
