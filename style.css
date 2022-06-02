@@ -1,17 +1,22 @@
 body {  
-  background-color: rgb(235, 227, 191);
+  background-color: rgb(235, 227, 191); 
+
 }
 
+#table{
+    display: flex;
+    justify-content: center;
+}
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
   margin: 16px;
+  width: 80vw;
 }
 
 td,
 th {
-  border: 1px solid grey;
+  border: 1px solid rgb(180, 179, 179);
   text-align: left;
   padding: 8px;
 }
@@ -142,11 +147,23 @@ input::placeholder{
     padding-right: 12px;
 }
 
-.statusColumn{
-    width: 16px;
-}
 
 .change{
-    width: 8px;
-    height: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(185, 185, 240);
+    width: 24px;
+    height: 24px;
+    border-radius: 16px;
+}
+
+body > table > tr > td:nth-child(5){
+    width:32px;
+
+}
+
+body > table > tr > td:nth-child(4){
+    width:32px;
+
 }

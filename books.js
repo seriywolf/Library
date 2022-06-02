@@ -38,23 +38,26 @@ function addBookToLibrary(title, author, pages, read) {
   for (let item in myLibrary[myLibrary.length - 1]) {
     if (item !== "nnn") {
       let td = document.createElement("td");
-      td.textContent = myLibrary[myLibrary.length - 1][item];
+      if (myLibrary[myLibrary.length - 1][item] === true) {
+        let button = document.createElement("button");
+        button.setAttribute("onclick", "changeStatus(this)");
+        button.classList.add("change");
+        button.textContent = "V";
+        td.appendChild(button);
+      } else if (!myLibrary[myLibrary.length - 1][item]) {
+        let button = document.createElement("button");
+        button.setAttribute("onclick", "changeStatus(this)");
+        button.classList.add("change");
+        button.textContent = "";
+        td.appendChild(button);
+      } else {
+        td.textContent = myLibrary[myLibrary.length - 1][item];
+      }
       tr.appendChild(td);
     }
   }
-  let tdStatus = document.createElement("td");
-  tdStatus.classList.add("statusColumn");
-  let buttonStatus = document.createElement("button");
-  buttonStatus.setAttribute("onclick", "changeStatus(this)");
-  //buttonStatus.textContent = "Change";
-  buttonStatus.classList.add("change");
-  tdStatus.appendChild(buttonStatus);
-  tr.appendChild(tdStatus);
   table.appendChild(tr);
 }
-
-addBookToLibrary("Harry Potter", "J.Rowling", 350, true);
-addBookToLibrary("War & Peace", "L.Tolstoy", 511, false);
 
 function deleteRowFunction(event) {
   let rowToRem = event.parentNode.parentNode;
@@ -112,18 +115,18 @@ document.querySelectorAll("fieldset input").forEach((item) =>
   })
 );
 
-function changeStatus(event) {
-  let tdToChange = event.parentNode.previousSibling;
-  if (tdToChange.textContent === "false") {
-    tdToChange.textContent = "true";
+function changeStatus(event) {    
+  if (event.textContent === "") {
+    event.textContent = "V";
   } else {
-    tdToChange.textContent = "false";
+    event.textContent = "";
   }
-
-  let rowToChange = event.parentNode.parentNode;
-  let nToChange = parseInt(rowToChange.dataset.id);
+  let nToChange = parseInt(event.parentNode.parentNode.dataset.id);
   const indexOfObject = myLibrary.findIndex((object) => {
     return object.nnn === nToChange;
   });
   myLibrary[indexOfObject].read = !myLibrary[indexOfObject].read;
 }
+
+addBookToLibrary("Harry Potter", "J.Rowling", 350, true);
+addBookToLibrary("War & Peace", "L.Tolstoy", 511, false);
