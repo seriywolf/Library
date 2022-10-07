@@ -11,7 +11,7 @@ function Book(title, author, pages, read) {
   this.info = function () {
     return `The ${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
   };
-}
+};
 
 //new Book("Harry Potter", "J.Rowling", 350, true).addBook();
 //new Book("War & Peace", "L.Tolstoy", 511, false).addBook();
@@ -24,40 +24,43 @@ function addBookToLibrary(title, author, pages, read) {
     read: read,
     nnn: n,
   });
-  let tr = document.createElement("tr");
-  tr.dataset.id = n;
-  n++;
-  let td = document.createElement("td");
-  td.classList.add("firstColumn");
-  let button = document.createElement("button");
-  button.setAttribute("onclick", "deleteRowFunction(this)");
-  button.textContent = "X";
-  button.classList.add("remove");
-  td.appendChild(button);
-  tr.appendChild(td);
-  for (let item in myLibrary[myLibrary.length - 1]) {
-    if (item !== "nnn") {
-      let td = document.createElement("td");
-      if (myLibrary[myLibrary.length - 1][item] === true) {
-        let button = document.createElement("button");
-        button.setAttribute("onclick", "changeStatus(this)");
-        button.classList.add("change");
-        button.textContent = "V";
-        td.appendChild(button);
-      } else if (!myLibrary[myLibrary.length - 1][item]) {
-        let button = document.createElement("button");
-        button.setAttribute("onclick", "changeStatus(this)");
-        button.classList.add("change");
-        button.textContent = "";
-        td.appendChild(button);
-      } else {
-        td.textContent = myLibrary[myLibrary.length - 1][item];
+  (function addBookToTable(){
+    let tr = document.createElement("tr");
+    tr.dataset.id = n;
+    n++;
+    let td = document.createElement("td");
+    td.classList.add("firstColumn");
+    let button = document.createElement("button");
+    button.setAttribute("onclick", "deleteRowFunction(this)");
+    button.textContent = "X";
+    button.classList.add("remove");
+    td.appendChild(button);
+    tr.appendChild(td);
+    for (let item in myLibrary[myLibrary.length - 1]) {
+      if (item !== "nnn") {
+        let td = document.createElement("td");
+        if (myLibrary[myLibrary.length - 1][item] === true) {
+          let button = document.createElement("button");
+          button.setAttribute("onclick", "changeStatus(this)");
+          button.classList.add("change");
+          button.textContent = "V";
+          td.appendChild(button);
+        } else if (!myLibrary[myLibrary.length - 1][item]) {
+          let button = document.createElement("button");
+          button.setAttribute("onclick", "changeStatus(this)");
+          button.classList.add("change");
+          button.textContent = "";
+          td.appendChild(button);
+        } else {
+          td.textContent = myLibrary[myLibrary.length - 1][item];
+        }
+        tr.appendChild(td);
       }
-      tr.appendChild(td);
     }
-  }
-  table.appendChild(tr);
-}
+    table.appendChild(tr);
+  })();
+
+};
 
 function deleteRowFunction(event) {
   let rowToRem = event.parentNode.parentNode;
