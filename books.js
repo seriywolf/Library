@@ -9,28 +9,14 @@ class Book {
     this.author = author;
     this.pages = pages;
     this.read = read;
-  }
-
-  get info() {
-    if (this.read === true) {
-      return `The ${this.title} by ${this.author}, ${this.pages} pages, already read.`;
-    } else {
-      return `The ${this.title} by ${this.author}, ${this.pages} pages, not read yet.`;
-    }
+    this.nnn = n;
   }
 };
 
-//new Book("Harry Potter", "J.Rowling", 350, true);
-//new Book("War & Peace", "L.Tolstoy", 511, false);
 
-function addBookToLibrary(title, author, pages, read) {  
-  myLibrary.push({
-    title: title,
-    author: author,
-    pages: pages,
-    read: read,
-    nnn: n,
-  });
+function addBookToLibrary(title, author, pages, read) { 
+  const newBook = new Book(title, author, pages, read);  
+  myLibrary.push(newBook);
   (function addBookToTable() {
     let tr = document.createElement("tr");
     tr.dataset.id = n;
@@ -48,13 +34,13 @@ function addBookToLibrary(title, author, pages, read) {
         let td = document.createElement("td");
         if (myLibrary[myLibrary.length - 1][item] === true) {
           let button = document.createElement("button");
-          button.setAttribute("onclick", "changeStatus(this)");
+          button.setAttribute("onclick", "changeReadStatus(this)");
           button.classList.add("change");
           button.textContent = "V";
           td.appendChild(button);
         } else if (!myLibrary[myLibrary.length - 1][item]) {
           let button = document.createElement("button");
-          button.setAttribute("onclick", "changeStatus(this)");
+          button.setAttribute("onclick", "changeReadStatus(this)");
           button.classList.add("change");
           button.textContent = "";
           td.appendChild(button);
@@ -62,8 +48,8 @@ function addBookToLibrary(title, author, pages, read) {
           td.textContent = myLibrary[myLibrary.length - 1][item];
         }
         tr.appendChild(td);
-      }
-    }
+      };
+    };
     table.appendChild(tr);
   })();
 }
@@ -124,7 +110,7 @@ document.querySelectorAll("fieldset input").forEach((item) =>
   })
 );
 
-function changeStatus(event) {
+function changeReadStatus(event) {
   if (event.textContent === "") {
     event.textContent = "V";
   } else {
