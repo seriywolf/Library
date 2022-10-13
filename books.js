@@ -116,9 +116,9 @@ function changeReadStatus(event) {
   } else {
     event.textContent = "";
   }
-  let nToChange = parseInt(event.parentNode.parentNode.dataset.id);
+  let idToChange = parseInt(event.parentNode.parentNode.dataset.id);
   const indexOfObject = myLibrary.findIndex((object) => {
-    return object.id === nToChange;
+    return object.id === idToChange;
   });
   myLibrary[indexOfObject].read = !myLibrary[indexOfObject].read;
 }
