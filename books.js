@@ -9,7 +9,7 @@ class Book {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.nnn = n;
+    this.id = n;
   }
 };
 
@@ -30,7 +30,7 @@ function addBookToLibrary(title, author, pages, read) {
     td.appendChild(button);
     tr.appendChild(td);
     for (let item in myLibrary[myLibrary.length - 1]) {
-      if (item !== "nnn") {
+      if (item !== "id") {
         let td = document.createElement("td");
         if (myLibrary[myLibrary.length - 1][item] === true) {
           let button = document.createElement("button");
@@ -59,7 +59,7 @@ function deleteRowFunction(event) {
   table.removeChild(rowToRem);
   let nToRemove = parseInt(rowToRem.dataset.id);
   const indexOfObject = myLibrary.findIndex((object) => {
-    return object.nnn === nToRemove;
+    return object.id === nToRemove;
   });
   myLibrary.splice(indexOfObject, 1);
 }
@@ -118,7 +118,7 @@ function changeReadStatus(event) {
   }
   let nToChange = parseInt(event.parentNode.parentNode.dataset.id);
   const indexOfObject = myLibrary.findIndex((object) => {
-    return object.nnn === nToChange;
+    return object.id === nToChange;
   });
   myLibrary[indexOfObject].read = !myLibrary[indexOfObject].read;
 }
