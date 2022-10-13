@@ -26,28 +26,17 @@ function addBookToTable() {
   tr.dataset.id = n;
   n++;
   let td = document.createElement("td");
-  td.classList.add("firstColumn");
-  let button = document.createElement("button");
-  button.setAttribute("onclick", "deleteRowFunction(this)");
-  button.textContent = "X";
-  button.classList.add("remove");
-  td.appendChild(button);
+  td.classList.add("firstColumn");  
+  createButton("deleteRowFunction(this)", "X", "remove", td);
   tr.appendChild(td);
+
   for (let item in myLibrary[myLibrary.length - 1]) {
     if (item !== "id") {
-      let td = document.createElement("td");
+      let td = document.createElement("td");      
       if (myLibrary[myLibrary.length - 1][item] === true) {
-        let button = document.createElement("button");
-        button.setAttribute("onclick", "changeReadStatus(this)");
-        button.classList.add("change");
-        button.textContent = "V";
-        td.appendChild(button);
+        createButton("changeReadStatus(this)", "V", "change", td);
       } else if (!myLibrary[myLibrary.length - 1][item]) {
-        let button = document.createElement("button");
-        button.setAttribute("onclick", "changeReadStatus(this)");
-        button.classList.add("change");
-        button.textContent = "";
-        td.appendChild(button);
+        createButton("changeReadStatus(this)", "", "change", td);
       } else {
         td.textContent = myLibrary[myLibrary.length - 1][item];
       }
@@ -56,6 +45,17 @@ function addBookToTable() {
   };
   table.appendChild(tr);
 };
+
+
+function createButton(func, textContent,classList, fieldToAdd){
+  let button = document.createElement("button");
+  button.setAttribute("onclick", func);
+  button.textContent = textContent;
+  button.classList.add(classList);
+  fieldToAdd.appendChild(button);
+  return fieldToAdd;
+};
+
 
 function deleteRowFunction(event) {
   let rowToRem = event.parentNode.parentNode;
@@ -67,10 +67,11 @@ function deleteRowFunction(event) {
   myLibrary.splice(indexOfObject, 1);
 }
 
-const newBookButton = (document.querySelector("#newBook").onclick =
+//Show the addBook form
+document.querySelector("#newBook").onclick =
   function () {
     form.style.display = "flex";
-  });
+  };
 
 const titleInput = document.querySelector("form #title");
 const authorInput = document.querySelector("form #author");
@@ -78,8 +79,11 @@ const pagesInput = document.querySelector("form #pages");
 const readInput = document.querySelector("form #read");
 const fieldset = document.querySelector("fieldset");
 
-const addBookButton = (document.querySelector("#addBook").onclick =
+
+//"Add Book" button
+document.querySelector("#addBook").onclick =
   function () {
+    //Check for empty fields;
     if (
       titleInput.value === "" ||
       authorInput.value === "" ||
@@ -93,17 +97,20 @@ const addBookButton = (document.querySelector("#addBook").onclick =
         pagesInput.value,
         readInput.checked
       );
+      //then clear all input fields for another input;
       titleInput.value = "";
       authorInput.value = "";
       pagesInput.value = "";
       readInput.checked = false;
       form.style.display = "none";
     }
-  });
+  };
 
+//Hide form when hit "Cancel"
 document.querySelector("#cancel").onclick = function () {
   form.style.display = "none";
 };
+
 
 document.querySelectorAll("fieldset input").forEach((item) =>
   item.addEventListener("click", function (event) {
