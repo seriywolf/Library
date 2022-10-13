@@ -17,42 +17,45 @@ class Book {
 function addBookToLibrary(title, author, pages, read) { 
   const newBook = new Book(title, author, pages, read);  
   myLibrary.push(newBook);
-  (function addBookToTable() {
-    let tr = document.createElement("tr");
-    tr.dataset.id = n;
-    n++;
-    let td = document.createElement("td");
-    td.classList.add("firstColumn");
-    let button = document.createElement("button");
-    button.setAttribute("onclick", "deleteRowFunction(this)");
-    button.textContent = "X";
-    button.classList.add("remove");
-    td.appendChild(button);
-    tr.appendChild(td);
-    for (let item in myLibrary[myLibrary.length - 1]) {
-      if (item !== "id") {
-        let td = document.createElement("td");
-        if (myLibrary[myLibrary.length - 1][item] === true) {
-          let button = document.createElement("button");
-          button.setAttribute("onclick", "changeReadStatus(this)");
-          button.classList.add("change");
-          button.textContent = "V";
-          td.appendChild(button);
-        } else if (!myLibrary[myLibrary.length - 1][item]) {
-          let button = document.createElement("button");
-          button.setAttribute("onclick", "changeReadStatus(this)");
-          button.classList.add("change");
-          button.textContent = "";
-          td.appendChild(button);
-        } else {
-          td.textContent = myLibrary[myLibrary.length - 1][item];
-        }
-        tr.appendChild(td);
-      };
+  addBookToTable()
+};
+
+
+function addBookToTable() {
+  let tr = document.createElement("tr");
+  tr.dataset.id = n;
+  n++;
+  let td = document.createElement("td");
+  td.classList.add("firstColumn");
+  let button = document.createElement("button");
+  button.setAttribute("onclick", "deleteRowFunction(this)");
+  button.textContent = "X";
+  button.classList.add("remove");
+  td.appendChild(button);
+  tr.appendChild(td);
+  for (let item in myLibrary[myLibrary.length - 1]) {
+    if (item !== "id") {
+      let td = document.createElement("td");
+      if (myLibrary[myLibrary.length - 1][item] === true) {
+        let button = document.createElement("button");
+        button.setAttribute("onclick", "changeReadStatus(this)");
+        button.classList.add("change");
+        button.textContent = "V";
+        td.appendChild(button);
+      } else if (!myLibrary[myLibrary.length - 1][item]) {
+        let button = document.createElement("button");
+        button.setAttribute("onclick", "changeReadStatus(this)");
+        button.classList.add("change");
+        button.textContent = "";
+        td.appendChild(button);
+      } else {
+        td.textContent = myLibrary[myLibrary.length - 1][item];
+      }
+      tr.appendChild(td);
     };
-    table.appendChild(tr);
-  })();
-}
+  };
+  table.appendChild(tr);
+};
 
 function deleteRowFunction(event) {
   let rowToRem = event.parentNode.parentNode;
